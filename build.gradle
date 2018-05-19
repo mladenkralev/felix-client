@@ -1,0 +1,62 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        repositories {
+            maven {
+                url = "https://plugins.gradle.org/m2/"
+            }
+        }
+        dependencies {
+            classpath "gradle.plugin.org.felix.osgi:buildSrc:0.22"
+        }
+    }
+}
+
+plugins {
+    id "org.felix.osgi" version "0.23"
+}
+
+apply plugin: 'java'
+
+allprojects {
+    repositories {
+        maven { url = 'http://download.eclipse.org/gemini/mvn/' }
+        maven { url = 'http://dist.wso2.org/maven2/' }
+
+        maven { url = 'http://repository.springsource.com/maven/bundles/external' }
+        maven { url = 'http://dist.wso2.org/maven2/' }
+        maven { url = 'http://www.datanucleus.org/downloads/maven2/' }
+
+        ivy { url = 'http://build.eclipse.org/rt/virgo/ivy/bundles/release' }
+        ivy { url = 'http://build.eclipse.org/rt/virgo/ivy/bundles/milestone' }
+        mavenCentral()
+    }
+}
+
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'osgi'
+
+}
+
+dependencies{
+    compile project(":modules:com.test.bundle.test.normal")
+    compile project(":modules:com.test.bundle.test.ds")
+
+    compileOnly group: 'org.eclipse.platform', name: 'org.eclipse.osgi', version: '3.12.50'
+
+    compile (group: 'org.eclipse.gemini' ,name: 	'org.eclipse.gemini.web.core', version: '3.0.3.RELEASE') {
+        exclude group:'org.eclipse.virgo.mirrored', module:'org.eclipse.osgi'
+    }
+    compile (group: 'org.eclipse.gemini' ,name: 	'org.eclipse.gemini.web.extender', version: '3.0.3.RELEASE') {
+        exclude group:'org.eclipse.virgo.mirrored', module:'org.eclipse.osgi'
+    }
+    compile (group: 'org.eclipse.gemini' ,name: 	'org.eclipse.gemini.web.tomcat', version: '3.0.3.RELEASE') {
+        exclude group:'org.eclipse.virgo.mirrored', module:'org.eclipse.osgi'
+    }
+    compile (group: 'org.eclipse.gemini' ,name: 	'org.eclipse.gemini.web.jaspic.fragment', version: '3.0.3.RELEASE') {
+        exclude group:'org.eclipse.virgo.mirrored', module:'org.eclipse.osgi'
+    }
+}
+

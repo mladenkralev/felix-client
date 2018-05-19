@@ -1,0 +1,5 @@
+rootProject.name = 'groovy-pluguin'
+
+include(":modules:com.test.bundle.test.normal")
+include(":modules:com.test.bundle.test.ds")
+//include(":test:com.unit.test.demo")
