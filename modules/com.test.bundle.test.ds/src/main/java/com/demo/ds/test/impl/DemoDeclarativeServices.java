@@ -1,7 +1,6 @@
-package com.demo.activator.impl;
+package com.demo.ds.test.impl;
 
-import com.demo.activator.TestService;
-import org.osgi.framework.BundleActivator;
+import com.demo.ds.test.TestService;
 import org.osgi.framework.BundleContext;
 import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;

@@ -2,4 +2,6 @@ rootProject.name = 'groovy-pluguin'
 
 include(":modules:com.test.bundle.test.normal")
 include(":modules:com.test.bundle.test.ds")
-//include(":test:com.unit.test.demo")
+include(":modules:com.test.bundle.jv.wab")
+include(":modules:com.test.bundle.kotl.wab")
+
